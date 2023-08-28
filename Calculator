@@ -1,0 +1,28 @@
+import java.lang.Math;
+import java.util.Scanner;
+
+class AirFlow {
+    
+    public static double afCalc(double btuI, double deltaTI) {
+        return btuI / (1.08 * deltaTI);
+    }
+    
+    public static void main(String[] args) {
+        
+        Scanner btuInput = new Scanner(System.in);
+        
+        System.out.println("Please enter BTUs");
+        
+        double btu = btuInput.nextDouble();
+        
+        Scanner deltaTInput = new Scanner(System.in);
+        
+        System.out.println("\nPlease enter delta T");
+        
+        double deltaT = deltaTInput.nextDouble();
+        
+        double af = afCalc(btu, deltaT);
+        
+        System.out.println("\nAir flow is " + af);
+    }
+}
