@@ -3,8 +3,12 @@ import java.util.Scanner;
 
 class AirFlow {
     
-    public static double afCalc(double btuI, double deltaTI) {
-        return btuI / (1.08 * deltaTI);
+    public static double btuCalc(double b, double f) {
+        return b * f;
+    }
+    
+    public static double afCalc(double q, double dT) {
+        return q / (1.08 * dT);
     }
     
     public static void main(String[] args) {
@@ -15,14 +19,25 @@ class AirFlow {
         
         double btu = btuInput.nextDouble();
         
+        Scanner effInput = new Scanner(System.in);
+        
+        System.out.println("\nPlease enter furnace efficiency");
+        
+        double f = effInput.nextDouble();
+        
+        double eff = f * .01;
+        
         Scanner deltaTInput = new Scanner(System.in);
         
         System.out.println("\nPlease enter delta T");
         
         double deltaT = deltaTInput.nextDouble();
         
-        double af = afCalc(btu, deltaT);
+        double btuAdj = btuCalc(btu, eff);
+        
+        double af = afCalc(btuAdj, deltaT);
         
         System.out.println("\nAir flow is " + af);
+        
     }
 }
